@@ -3,6 +3,10 @@ var router 		= express.Router();
 var sha1		= require('sha1');
 
 /**
+* @apiDefine user Authentificate user access only
+**/
+
+/**
  *
  * @api {post} /api/1.0/users/ Create new user
  * @apiName signup
@@ -29,8 +33,8 @@ HTTP/1.1 201 Created
     ],
     "_id": "56015da93177e5b41b465999"
 }
- *
  */
+ 
 
 router.post('/', function(req, res) {
 	var params = req.body;
@@ -140,6 +144,8 @@ router.post('/signin', function(req, res) {
  * @apiName getusers
  * @apiGroup Users
  * @apiVersion 1.0.0
+ *
+ * @apiPermission user
  *
  * @apiParam {String} uid User unique _ID
  * @apiParam {String} [offset=0] Offset value of result data
