@@ -79,6 +79,25 @@ router.post('/', function(req, res) {
  * @apiParam {String} email User email address
  * @apiParam {String} password User password
  *
+ * @apiSuccessExample {json} Success Response :
+ HTTP/1.1 200 Success
+ {
+    "_id": "56015da93177e5b41b465999",
+    "infos": {
+        "login": "Nirio",
+        "lastname": "PRIN",
+        "firstname": "Nico",
+        "email": "nico.prin69@gmail.com"
+    },
+    "auth": [
+        "USER"
+    ],
+    "token": {
+        "key": "yJftuFhHar4oA3tTeZdxk0hUA1OYGSOV",
+        "expiration": 1442948582
+    }
+}
+ *
  */
 
 router.post('/signin', function(req, res) {
@@ -127,6 +146,38 @@ router.post('/signin', function(req, res) {
  * @apiParam {String} [limit=25] Number of return users 
  *
  * @apiHeader {String} X-Auth-Token User token
+ * @apiSuccessExample {json} Success Response :
+ HTTP/1.1 200 Success
+ {
+    "total": 2,
+    "offset": 0,
+    "users": [
+        {
+            "_id": "56015da93177e5b41b465999",
+            "infos": {
+                "login": "Nirio",
+                "lastname": "PRIN",
+                "firstname": "Nico",
+                "email": "nico.prin69@gmail.com"
+            },
+            "auth": [
+                "USER"
+            ]
+        },
+        {
+            "_id": "5601604c3177e5b41b46599a",
+            "infos": {
+                "login": "hdupont",
+                "lastname": "Dupont",
+                "firstname": "Henry",
+                "email": "hdupont@test.com"
+            },
+            "auth": [
+                "USER"
+            ]
+        }
+    ]
+}
  *
  */
 
@@ -135,7 +186,7 @@ router.get('/:uid', function(req, res, next) {
 	// Parameters
 	var		token 	= req.headers['x-auth-token'];
 	var		uid		= req.params.uid;
-	var		offset 	= (req.query.offset) ? req.query.offset : 0;
+	var		offset 	= (req.query.offset) ? parseInt(req.query.offset) : 0;
 	var 	limit 	= (req.query.limit) ? req.query.limit : 25;
 	
 	if (!token || !uid) {
