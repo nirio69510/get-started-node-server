@@ -16,8 +16,8 @@ Token				= require('./helpers/tokens.js');
 Tools				= require('./helpers/tools.js');
 
 // Routes
-var routes 			= require('./routes/index');
-var users 			= require('./routes/users');
+var routes 			= require('./routes/1.0/index');
+var users 			= require('./routes/1.0/users');
 
 var app = express();
 
@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 Log.i("Initialize routes...");
 app.use('/', routes);
-app.use('/users', users);
+app.use('/api/1.0/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -2,6 +2,36 @@ var express 	= require('express');
 var router 		= express.Router();
 var sha1		= require('sha1');
 
+/**
+ *
+ * @api {post} /api/1.0/users/ Create new user
+ * @apiName signup
+ * @apiGroup Users
+ * @apiVersion 1.0.0
+ *
+ * @apiParam {String} login User login 
+ * @apiParam {String} firstname User firstname 
+ * @apiParam {String} lastname User lastname
+ * @apiParam {String} email User email address
+ * @apiParam {String} password User password
+ * @apiSuccessExample {json} Success Response :
+HTTP/1.1 201 Created
+ {
+    "infos": {
+        "login": "Nirio",
+        "password": "f91a8ee646a277a2f1359709604b99c1b32d9f24",
+        "lastname": "PRIN",
+        "firstname": "Nico",
+        "email": "nico.prin69@gmail.com"
+    },
+    "auth": [
+        "USER"
+    ],
+    "_id": "56015da93177e5b41b465999"
+}
+ *
+ */
+
 router.post('/', function(req, res) {
 	var params = req.body;
 	
@@ -34,10 +64,22 @@ router.post('/', function(req, res) {
 			}
 			
 			res.status(201);
-			res.json(user);
+			res.json(user.ops[0]);
 		});
 	});
 });
+
+/**
+ *
+ * @api {post} /api/1.0/users/signin/ Signin user process
+ * @apiName signin
+ * @apiGroup Users
+ * @apiVersion 1.0.0
+ *
+ * @apiParam {String} email User email address
+ * @apiParam {String} password User password
+ *
+ */
 
 router.post('/signin', function(req, res) {
 	var params = req.body;
@@ -73,7 +115,21 @@ router.post('/signin', function(req, res) {
 	});
 });
 
-/* GET users listing. */
+/**
+ *
+ * @api {get} /api/1.0/users/:uid[?offset=0&limit=25] Get list of users
+ * @apiName getusers
+ * @apiGroup Users
+ * @apiVersion 1.0.0
+ *
+ * @apiParam {String} uid User unique _ID
+ * @apiParam {String} [offset=0] Offset value of result data
+ * @apiParam {String} [limit=25] Number of return users 
+ *
+ * @apiHeader {String} X-Auth-Token User token
+ *
+ */
+
 router.get('/:uid', function(req, res, next) {
 	
 	// Parameters
