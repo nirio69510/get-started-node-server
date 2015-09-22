@@ -1,0 +1,10 @@
+{
+	"MISPARAMS": 	{ "msg":	"Missing parameters", 		"status": 400,	"custom": "400E01" 	},
+	"NOTFOUND": 	{ "msg":  	"Method not found", 		"status": 404,	"custom": "404E01" 	},
+	"BADTOKEN":	 	{ "msg":    "Bad token", 				"status": 403,	"custom": "403E01" 	},
+	"INTERR": 		{ "msg":    "Internal server error", 	"status": 500,	"custom": "500E01" 	},
+	"USNFOUND": 	{ "msg":    "User not found", 			"status": 404,	"custom": "404E02" 	},
+	"TKEXPIRE": 	{ "msg":    "Token is expired", 		"status": 403,	"custom": "403E02" 	},
+	"EMAILFORMAT": 	{ "msg":    "Bad email format", 		"status": 400,	"custom": "400E02" 	},
+	"EMAILUSED": 	{ "msg": 	"Email already used",		"status": 401,	"custom": "401E01"	}
+}

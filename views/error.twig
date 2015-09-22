@@ -1,0 +1,6 @@
+{% extends "layout.twig" %}
+{% block container %}
+	<h1>{{message}}</h1>
+	<p>Error : {{error.status}}</p>
+	<pre>{{error.stack}}</pre>
+{%endblock%}
