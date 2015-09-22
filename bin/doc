@@ -1,0 +1,1 @@
+nodemon --exec "apidoc -i ../routes/ -o ../public/doc/ -f *.js"
